@@ -1,0 +1,22 @@
+.background
+{
+	background: url('d80033112f14b31217cd656237e16a45.png')  no-repeat center top;
+    background-size: cover;
+	min-height: 1000px;
+    position: relative;
+    opacity: 0.5
+   }
+.valid_compte
+{
+	width: 40%;
+	height: 150px;
+	border:double;
+	background-color: #0C4981;
+	color:white; 
+
+}
+.space 
+{
+	width: 100%;
+	height: 300px;
+}

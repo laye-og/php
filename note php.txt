@@ -1,0 +1,27 @@
+		NOTE SUR LA CONFIGURATION DE LA BASE DE DONNE
+	LES REPERTOIRES
+logs: la ou se trouve les utilisateurs connectés au serveur c'est la journalisation
+tmp:dosier dans lequel on met des choses temporelles
+conf: contient les fichiers de configuration du server
+	{
+	  httpd.conf: c'est le fichier de configuration. il contient les instructions 
+	que doit executer apache.Le fichier contient des directives.
+	  exemple de directives:
+	#listen: permet de dire c'est quoi le n° de port qui écoute, on peut aussi le changer
+	#loadModule: Ces directives matérialisent les extensions, de ce fait on peut y ajouter d'autres extensions comme pour le php
+	#ServerAdmin:Pour pouvoir recupèrer le mail de l'administrateur et l'avertir du beugu de son serveur, donc c'est le serveur qui envoi une page contenant les info de l'administrateur système.
+	#DocumentRoot:C'est le repertoire de publication.On peut modifier le répertoire par defaut.
+	# ServerName : Indique le nom du serveur, par defaut c'est localhost
+	# DirectoryIndex: Au cas ou l'utisateur n'indique pas la resource voulue qu'on cherche dans les fichiers  index.php index.php3 index.html index.htm sinon envoi la pge d'accueil
+	  
+	  httpd-userdir:
+	# Userdir: ON l'utilise pour créer des repertoires personnal a chaque programmeur de ce site qui publie des infos par exemple de ce fait dans le site on aura la page de chaque utilisateur.
+	
+	}
+Maintenant on entre dans le dossier php-imi
+Engine=on
+Short_open_tag =On 
+{
+Elle permet au codeur dÕutiliser ou de ne plus utiliser  le mode php en mettant <? ?> Au lieu de <?php ?> 
+}
+	

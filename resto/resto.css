@@ -1,0 +1,36 @@
+	.plat input[type="submit"]
+{
+	
+	height: 30px;
+	margin-top: 10px;
+	background-color: red;
+	color: white;
+	border:double;
+
+}
+.plat input[type="submit"]:hover 
+{
+
+	background-color: white;
+	color: red;
+	border:double;
+}
+.facture
+{
+	border:double;
+	margin-top: 30px;
+	float: right;
+	background-color:black;
+	height: 500px;
+	width: 500px;
+	color: white;
+}
+.fac
+{
+	color: white;
+}
+.Menu
+{
+float:left;
+
+}

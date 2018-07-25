@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		
+		<title></title>
+<style type="text/css">
+  .image-block {
+    height: fit-content;
+        border: 1px solid rgba(0,0,0,0.3);
+  }
+
+  .image-block > img {
+    width: 100%;
+    height: auto;
+    margin: 5px;
+  }
+
+  #header-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+  }
+  body {
+    background: #f6f6f6;
+  }
+</style>
+  </head>
+<body>
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg justify-content-between">
+  <a class="navbar-brand" href="#"><p>WELCOME TO MY BEAUTIFUL SITE</p></a>
+  <div id="header-right">
+    <form class="form-inline justify-content-between" style="width: 150px;" action="connecter.php" >
+      <button type="submit" class="btn btn-primary">SignIn </button>
+ </form>
+ <form class="form-inline justify-content-between" style="width: 150px;" action="inscription.php" >
+      <button type="submit" class="btn btn-light">SignUp </button>
+ </form>
+</div>
+</nav>
+<div class="container">
+  <div class="row justify-content-md-center" style="margin-top:50px">
+    <div class="col col-lg-3 col-md-3" style="background: pink" methode = "GET" action = "recupimage.php">
+       <button type="button" class="btn btn-primary btn-lg btn-block">Album</button>
+        <ul>
+          <li>Titlte</li>
+          <li>Author </li>
+          <li>Date </li>
+       </ul> 
+       <button type="button" class="btn btn-primary btn-lg btn-block">Picture</button>
+       <ul>
+          <li>Titlte</li>
+          <li>Author </li>
+          <li>Date </li>
+       </ul> 
+    </div>
+    <div class="col col-lg-6 col-md-6">
+      <div class="row">
+        <div class="col col-lg-4 col-md-4 image-block">
+          <img src="../Images/bambi.jpg">
+        </div>
+        <div class="col col-lg-4 col-md-4 image-block">
+          <img src="../Images/bambi.jpg">
+        </div>
+        <div class="col col-lg-4 col-md-4 image-block">
+          <img src="../Images/bambi.jpg">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-lg-4 col-md-4 image-block">
+          <img src="../Images/bambi.jpg">
+        </div>
+        <div class="col col-lg-4 col-md-4 image-block">
+          <img src="../Images/bambi.jpg">
+        </div>
+        <div class="col col-lg-4 col-md-4 image-block">
+          <img src="../Images/bambi.jpg">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-lg-4 col-md-4 image-block">
+          <img src="../Images/bambi.jpg">
+        </div>
+        <div class="col col-lg-4 col-md-4 image-block">
+          <img src="../Images/bambi.jpg">
+        </div>
+        <div class="col col-lg-4 col-md-4 image-block">
+          <img src="../Images/bambi.jpg">
+        </div>
+      </div>
+    </div>
+    <div class="col col-lg-3 col-md-3" style="background: pink">
+     <big> Album_list</big>
+     <button type="button" class="btn btn-primary btn-lg btn-block" value="1"><a href="suiteproj.html?id=1">Album1</a></button>
+     <button type="button" class="btn btn-primary btn-lg btn-block" value="2">Album2</button>
+     <button type="button" class="btn btn-primary btn-lg btn-block" value="3">Album3</button>
+     <button type="button" class="btn btn-primary btn-lg btn-block" value="4">Album4</button>
+     <button type="button" class="btn btn-primary btn-lg btn-block" value="5">Album5</button>
+     <button type="button" class="btn btn-primary btn-lg btn-block" value="6">Album6</button>
+     <button type="button" class="btn btn-primary btn-lg btn-block" value="7">Album7</button>
+     <button type="button" class="btn btn-primary btn-lg btn-block" value="8">Album8</button>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

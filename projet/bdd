@@ -1,0 +1,542 @@
+-- phpMyAdmin SQL Dump
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
+--
+-- Client :  localhost:8889
+-- Généré le :  Mer 28 Mars 2018 à 01:12
+-- Version du serveur :  5.6.35
+-- Version de PHP :  7.1.1
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Base de données :  `tennis`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `pseudo` varchar(30) DEFAULT NULL,
+  `nom` varchar(35) DEFAULT NULL,
+  `prenom` varchar(30) DEFAULT NULL,
+  `ddn` date NOT NULL,
+  `mdp` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `admin`
+--
+
+INSERT INTO `admin` (`id`, `pseudo`, `nom`, `prenom`, `ddn`, `mdp`) VALUES
+(1, 'laye', 'ndiaye', 'abdoulaye', '0000-00-00', 'cuisine'),
+(2, 'modou', 'sy', 'mamadou', '2322-02-12', 'poipoi');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `arbitre`
+--
+
+CREATE TABLE `arbitre` (
+  `idArbitre` int(11) NOT NULL,
+  `NomArbitre` varchar(45) NOT NULL,
+  `PrenomArbitre` varchar(45) NOT NULL,
+  `NationaliteArbitre` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `entraineur`
+--
+
+CREATE TABLE `entraineur` (
+  `IdEntraineur` int(11) NOT NULL,
+  `nom` varchar(45) NOT NULL,
+  `prenom` varchar(45) NOT NULL,
+  `ddn` varchar(45) NOT NULL,
+  `pseudo` varchar(23) NOT NULL,
+  `mdp` varchar(15) NOT NULL,
+  `NationaliteEntraineur` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `entraineur`
+--
+
+INSERT INTO `entraineur` (`IdEntraineur`, `nom`, `prenom`, `ddn`, `pseudo`, `mdp`, `NationaliteEntraineur`) VALUES
+(1, 'hvjvjh', 'jhfhf', '3333-02-12', 'hhgjh', 'cuisine', ''),
+(2, 'ndiaye', 'ffjrjr', '1997-12-11', 'laye', 'cuisine', ''),
+(3, 'seye', 'jerry', '2012-12-12', 'jerryboston', 'cuisine', ''),
+(4, 'ndiaye', 'aziz', '1111-11-11', 'ziz', 'cuisine', '');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `evenement`
+--
+
+CREATE TABLE `evenement` (
+  `TypeEvenement` int(11) NOT NULL,
+  `Rencontre_DateRencontre` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `joueur`
+--
+
+CREATE TABLE `joueur` (
+  `idJoueur` int(11) NOT NULL,
+  `NomJoueur` varchar(45) NOT NULL,
+  `PrenomJoueur` varchar(45) NOT NULL,
+  `AgeJoueur` int(11) NOT NULL,
+  `SexeJoueur` varchar(1) NOT NULL,
+  `NationaliteJoueur` varchar(45) NOT NULL,
+  `ClassementJoueur` varchar(45) NOT NULL,
+  `Entraineur_IdEntraineur` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `joueur_has_evenement`
+--
+
+CREATE TABLE `joueur_has_evenement` (
+  `Joueur_idJoueur` int(11) NOT NULL,
+  `Evenement_TypeEvenement` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `journaliste`
+--
+
+CREATE TABLE `journaliste` (
+  `id` int(11) NOT NULL,
+  `pseudo` varchar(30) DEFAULT NULL,
+  `nom` varchar(35) DEFAULT NULL,
+  `prenom` varchar(30) DEFAULT NULL,
+  `ddn` date NOT NULL,
+  `mdp` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `journaliste`
+--
+
+INSERT INTO `journaliste` (`id`, `pseudo`, `nom`, `prenom`, `ddn`, `mdp`) VALUES
+(46, 'dddd', 'fffff', 'fffff', '1111-11-11', 'cuisine'),
+(47, 'loolo', 'lollool', 'lloll', '0000-00-00', 'cuisine'),
+(48, 'eee', 'rrrr', 'tttt', '0011-11-11', 'cuisine'),
+(49, 'laye', 'grd', 'mbacké', '0001-11-11', 'limousine'),
+(50, 'laye', 'grd', 'mbacké', '0001-11-11', 'cuisine'),
+(51, 'laze', 'kkdkdk', 'ddjdjdj', '1111-11-11', 'cuisine'),
+(52, 'knlkn', 'rgdger', 'greyger', '1111-11-11', 'laye'),
+(53, 'laye', 'ndiaye', 'abdoulaye', '0000-00-00', 'admin'),
+(54, 'tima', 'hann', 'fatima', '1111-11-11', 'cuisine'),
+(55, 'tassy', 'sy', 'aissata', '2012-12-12', 'tassy'),
+(56, 'adja', 'tr', 'awa', '1111-11-11', 'adja');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `journaliste_post`
+--
+
+CREATE TABLE `journaliste_post` (
+  `id` int(11) NOT NULL,
+  `titre` mediumtext NOT NULL,
+  `article` longtext NOT NULL,
+  `photo` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `journaliste_post`
+--
+
+INSERT INTO `journaliste_post` (`id`, `titre`, `article`, `photo`) VALUES
+(50, ' Federer, le triomphe de la persévérance', '<p><strong>Roger Federer, devenu &agrave; 36 ans et six mois le N.1 mondial le plus &acirc;g&eacute; de l&#39;histoire, a d&ucirc; patienter plus de cinq ans avant de remonter sur le tr&ocirc;ne de l&#39;ATP, qu&#39;il avait quitt&eacute; en novembre 2012.</strong></p>\r\n\r\n<p>Pas si loin de le r&eacute;cup&eacute;rer l&#39;an pass&eacute;, le Suisse avait auparavant subi la domination quasi &eacute;crasante de Novak Djokovic pendant deux saisons (2014, 2015) et v&eacute;cu deux ann&eacute;es m&eacute;diocres (2013, 2016) &agrave; l&#39;issue desquelles son avenir s&#39;inscrivait en pointill&eacute;s.<br />\r\n- 2013: le d&eacute;but de la fin? -&nbsp;<br />\r\nG&ecirc;n&eacute; par son dos et une nouvelle raquette difficile &agrave; apprivoiser, le Suisse r&eacute;alise une saison moyenne. Pour la premi&egrave;re fois depuis onze ans, il n&#39;atteint pas une seule finale en Grand Chelem. Il ne remporte qu&#39;un titre, mineur, &agrave; Halle. Pire, il perd m&ecirc;me sa couronne dans son jardin de Wimbledon d&egrave;s le deuxi&egrave;me tour apr&egrave;s une d&eacute;faite face au modeste ukrainien Sergiy Stakhovsky. &quot;C&#39;est d&eacute;finitivement la fin d&#39;une &eacute;poque&quot;, estime l&#39;ex-gloire du tennis Boris Becker au sujet du maestro helv&egrave;te, &eacute;ject&eacute; du top 5 (7e) pour la premi&egrave;re fois depuis... f&eacute;vrier 2003. &quot;J&#39;ai l&#39;habitude de rebondir plut&ocirc;t bien&quot;, r&eacute;pond l&#39;int&eacute;ress&eacute;.</p>\r\n\r\n<h2>2014: Coupe Davis et 2e place mondiale</h2>\r\n\r\n<p><br />\r\nLe B&acirc;lois revient &agrave; la 2e place, avec cinq titres et six autres finales, dont une &agrave; Wimbledon o&ugrave; il est domin&eacute; par Djokovic. S&#39;il bat le Serbe trois fois sur cinq, ce dernier reste le plus fort sur l&#39;ensemble de la saison qu&#39;il termine &agrave; la premi&egrave;re place. Federer aura manqu&eacute; une opportunit&eacute; lors de l&#39;US Open o&ugrave; le futur laur&eacute;at, le Croate Marin Cilic, l&#39;&eacute;carte en demi-finale &agrave; la surprise g&eacute;n&eacute;rale. Il compl&egrave;tera n&eacute;anmoins son palmar&egrave;s avec la Coupe Davis. Arriv&eacute; avec le dos bloqu&eacute; en France, c&#39;est pourtant lui qui offre le point de la victoire &agrave; son camp en finale. Il aura patient&eacute; quinze ans avant de soulever le Saladier d&#39;argent.</p>\r\n\r\n<h2>2015: dans la roue de Djokovic</h2>\r\n\r\n<p><br />\r\nQuasiment intouchable, Djokovic remporte cinq de ses huit duels avec le B&acirc;lois, dont tous les plus importants: en finale de l&#39;US Open, de Wimbledon et du Masters o&ugrave; sa sup&eacute;riorit&eacute; est ind&eacute;niable. Laur&eacute;at de trois des quatre &quot;Majors&quot; et finaliste &agrave; Roland-Garros, le &quot;Djoker&quot; ne laisse que des miettes &agrave; ses rivaux, dont Federer qui empoche tout de m&ecirc;me six titres mais un seul en Masters 1000 (Cincinnati). Le maestro helv&egrave;te ne d&eacute;sesp&egrave;re pas. &quot;Ce qui me satisfait, c&#39;est la constance que je peux avoir sur la dur&eacute;e d&#39;un tournoi&quot;, dit-il.&nbsp;</p>\r\n\r\n<h2>2016: annus horribilis</h2>\r\n\r\n<p><br />\r\nC&#39;est sa pire saison, g&acirc;ch&eacute;e par une blessure au genou gauche qui l&#39;oblige &agrave; mettre un terme &agrave; sa saison d&egrave;s juillet apr&egrave;s une d&eacute;faite en demi-finale de Wimbledon. &quot;RF&quot; esp&egrave;re bien &quot;&ecirc;tre de retour sur le Centre Court l&#39;ann&eacute;e prochaine (2017)&quot; mais doit renoncer &agrave; la qu&ecirc;te de la m&eacute;daille d&#39;or olympique en simple &agrave; Rio, le dernier grand titre qui lui manque. Il se laisse du temps pour gu&eacute;rir. Mais cette ann&eacute;e achev&eacute;e &agrave; la 16e place et sans troph&eacute;e - fait rarissime - alimente les rumeurs de d&eacute;clin. A 35 ans, le Suisse sera-t-il capable de remporter ce 18e titre majeur qui lui &eacute;chappe depuis 2012?</p>\r\n\r\n<h2>2017: retour au top avec Nadal</h2>\r\n\r\n<p><br />\r\nAvec les d&eacute;boires de Djokovic et Andy Murray (alors N.1), l&#39;ann&eacute;e d&eacute;bute avec une finale inattendue &agrave; l&#39;Open d&#39;Australie entre Nadal et Federer, qui s&#39;offre son 18e titre majeur! Les deux stars du tennis confirmeront leur retour sur le devant la sc&egrave;ne. Federer encha&icirc;nera avec des titres &agrave; Indian Wells, Miami et surtout un 8e sacre record &agrave; Wimbledon. Nadal redeviendra lui le roi de la terre battue avec la &quot;Decima&quot; &agrave; Roland-Garros qui sera suivie par une autre cons&eacute;cration &agrave; l&#39;US Open. La premi&egrave;re place mondiale lui reviendra &eacute;galement. Mais ce n&#39;&eacute;tait que partie remise pour le Suisse, parvenu &agrave; ses fins vendredi soir &agrave; Rotterdam.</p>\r\n', '1.jpg'),
+(52, 'Andy Murray : \"Je ne suis pas fini pour le haut niveau\"', '<p><strong>Andy Murray&nbsp;</strong>n&#39;a jou&eacute; qu&#39;une fois depuis son &eacute;limination en quart de finale de&nbsp;<strong>Wimbledon&nbsp;</strong>l&#39;ann&eacute;e derni&egrave;re. Et encore, c&#39;&eacute;tait au tournoi exhibition d&#39;<strong>Abu Dhabi</strong>, un petit set et puis s&#39;en va ce jour-l&agrave; contre l&#39;Espagnol&nbsp;<strong>Roberto Bautista-Agut&nbsp;</strong>(perdu 6-2). Ayant subi une op&eacute;ration de la hanche le 8 janvier, le Britannique est toujours en phase de convalescence et s&#39;est fix&eacute; un objectif : &ecirc;tre revenu au mieux pour &quot;son&quot; tournoi :&nbsp;<strong>Wimbledon&nbsp;</strong>(qu&#39;il a remport&eacute; deux fois).</p>\r\n\r\n<p>&quot;<em>Je prends mon temps pour m&#39;assurer que la r&eacute;&eacute;ducation se d&eacute;roule bien. Beaucoup de ce que les chirurgiens supposent d&eacute;pendra de ma d&eacute;termination et de ma volont&eacute; de revenir</em>&quot; a d&eacute;clar&eacute; l&#39;ancien num&eacute;ro 1 mondial qui a repris l&#39;entra&icirc;nement physique mais qui n&#39;a pas encore repris ses raquettes selon le m&eacute;dia Britannique&nbsp;<strong>Sky Sports</strong>.&nbsp;Un retour sur terre battue semble donc &ecirc;tre mis de c&ocirc;t&eacute; pour privili&eacute;gier la saison sur herbe. C&#39;est donc un&nbsp;<strong>Andy Murray&nbsp;</strong>prudent mais serein qui pr&eacute;pare son retour, d&eacute;termin&eacute; &agrave; revenir au top-niveau : &quot;<em>Je ne suis pas fini pour le haut niveau</em>&quot; a-t-il d&eacute;clar&eacute;. Un retour au tournoi du&nbsp;<strong>Queen&#39;s&nbsp;</strong>(5 fois titr&eacute;) ?&nbsp;</p>\r\n', '2.jpg'),
+(54, 'Nicolas Mahut : «Être dans le cut pour Wimbledon»', '<p><strong>Nicolas Mahut, &eacute;limin&eacute; au premier tour &agrave; Indian Wells par l&#39;Indien Yuki Bhambri (7-5, 6-3)</strong>&nbsp;: &laquo;J&#39;ai des regrets sur le premier set, j&#39;ai des balles pour mener 4-0, puis 5-1. Mais &agrave; 4-2, je lui donne le jeu. Ca m&#39;a stress&eacute; car il retourne tr&egrave;s bien. J&#39;ai cogit&eacute;, je suis devenu moins percutant. Ca ne chiffre pas beaucoup en terme de points au classement. Le cut pour Roland Garros arrive bient&ocirc;t et si je suis pris pour le quart de Coupe Davis en Italie, il me restera peu de tournois pour marquer des points. Peut-&ecirc;tre qu&#39;inconsciemment &ccedil;a me rajoute du stress. Mais j&#39;ai suffisamment d&#39;exp&eacute;rience pour g&eacute;rer &ccedil;a. Depuis l&#39;Australie, le niveau de jeu monte malgr&eacute; tout. &Ecirc;tre dans le cut pour Wimbledon, ce serait important, &ccedil;a me permettrait de faire une saison compl&egrave;te sur gazon.&raquo;</p>\r\n', '3.jpg'),
+(57, 'MURRAY ESPÈRE FAIRE SON  RETOUR ', '<p><span style=\"font-size:14px\">Op&eacute;r&eacute; &agrave; la hanche le 8 janvier, Andy Murray est toujours convalescent mais pourrait faire son grand retour sur gazon, un an apr&egrave;s avoir quitt&eacute; le circuit.&nbsp;</span></p>\r\n\r\n<p><span style=\"font-size:14px\">Revenir aux affaires apr&egrave;s de longues blessures, les plus grands tennismen du circuit s&rsquo;y essayent &agrave; tour de r&ocirc;le. C&rsquo;est le cas pour Andy Murray, absent des terrains depuis juillet dernier et une d&eacute;faite en 5 sets contre Sam Querrey &agrave; Wimbledon. Depuis, le Britannique n&rsquo;a pas disput&eacute; le moindre match officiel, la faute &agrave; une hanche qui siffle de mani&egrave;re r&eacute;currente et qui le laisse &eacute;loign&eacute; des courts de tennis. Ayant &eacute;t&eacute; op&eacute;r&eacute; le 8 janvier dernier pour ce m&ecirc;me probl&egrave;me, le joueur de 30 ans a d&ucirc; repousser son retour,<a href=\"http://sport24.lefigaro.fr/tennis/atp/actualites/andy-murray-renonce-a-l-open-d-australie-891106\" target=\"_self\">&nbsp;initialement pr&eacute;vu en Australie pour Brisbane et l&rsquo;Open d&rsquo;Australie</a>. Dans un entretien accord&eacute; &agrave; la&nbsp;<em>BBC</em>, l&rsquo;ancien n&deg;1 mondial s&rsquo;est montr&eacute; rassurant, sans s&rsquo;enflammer. &laquo;<em>Je ne vais pas pr&eacute;cipiter les choses&nbsp;, a d&eacute;clar&eacute; Murray. Je ne vais pas essayer de revenir aussi vite que je peux. Je vais prendre mon temps pour m&rsquo;assurer que la cure de d&eacute;sintoxication est bien faite, et m&rsquo;assurer que la chirurgie soit aussi r&eacute;ussie que possible</em>.</span></p>\r\n\r\n<blockquote><span style=\"font-size:14px\"><strong>&laquo;<em>Beaucoup de ce que les chirurgiens diront d&eacute;pendra de mon implication et de ma volont&eacute; de revenir</em>&raquo;&nbsp;</strong></span></blockquote>\r\n\r\n<blockquote>\r\n<p><span style=\"font-size:14px\">Apr&egrave;s avoir subi une intervention chirurgicale, l&rsquo;ancien n&deg;1 mondial est de retour dans les salles de sport, o&ugrave; utilise des poids et travaille sur un v&eacute;lo d&rsquo;appartement. Selon ses proches, les premi&egrave;res &eacute;tapes de sa r&eacute;habilitation se d&eacute;roulent pour le mieux. Voil&agrave; enfin une bonne nouvelle pour Murray, conscient que la route est encore longue et que sa remise en forme ne d&eacute;pend (presque) que de lui. &laquo;<em>Une grande partie de ce que les chirurgiens me diront, c&rsquo;est en grande partie &agrave; cause de ma d&eacute;termination, de mon &eacute;thique de travail, de ma r&eacute;adaptation, de mon &eacute;coute et de ma volont&eacute; de revenir</em>&raquo;, a affirm&eacute; Andy Murray au m&eacute;dia anglais.</span></p>\r\n\r\n<p><span style=\"font-size:14px\">L&rsquo;Ecossais a soulign&eacute; en janvier, lors d&rsquo;une conf&eacute;rence t&eacute;l&eacute;phonique avec un groupe de journalistes britanniques depuis son lit d&rsquo;h&ocirc;pital, qu&rsquo;il ne souhaitait pas se fixer de d&eacute;lais rigides. &laquo;<em>Je ne suis pas int&eacute;ress&eacute; pour revenir sur un tournoi sp&eacute;cifique</em>&raquo;, pr&eacute;cise-t-il. &laquo;<em>Je veux revenir quand je serai en forme et pr&ecirc;t &agrave; jouer, pas dans une situation comme &agrave; Brisbane ou &agrave; l&rsquo;Open d&rsquo;Australie, o&ugrave; je n&rsquo;&eacute;tais pas &agrave; 100%. Je veux &ecirc;tre pr&ecirc;t quand je reviendrai</em>&raquo;, affirme Andy Murray. Il semblerait, au vu de son op&eacute;ration et de son &eacute;tat de forme, qu&rsquo;il puisse reprendre l&#39;entra&icirc;nement fin mars et revenir aux alentours du mois de mai. Cependant, Murray pr&eacute;f&egrave;re attendre l&rsquo;herbe et Wimbledon, o&ugrave; il a glan&eacute; le titre &agrave; deux reprises (2013 et 2016), pour tenter un come-back, chez lui, &agrave; la Federer.&nbsp;</span></p>\r\n</blockquote>\r\n', '5.jpg'),
+(58, 'Marion Bartoli repousse encore son retour', '<h2><strong><span style=\"font-size:14px\">La Fran&ccedil;aise, retir&eacute;e des courts depuis son titre &agrave; Wimbledon en 2013, d&eacute;cale son retour. Elle avait annonc&eacute; fin d&eacute;cembre revenir dans le circuit WTA d&eacute;but mars, mais s&#39;est bless&eacute;e &agrave; la hanche.</span></strong></h2>\r\n\r\n<p><span style=\"font-size:14px\">Marion Bartoli ne reviendra pas tout de suite sur les courts du circuit WTA. Sa blessure &agrave; la hanche, contract&eacute;e la semaine derni&egrave;re&nbsp;pendant son match d&#39;exhibition perdu face &agrave; Serena Williams, est plus grave que pr&eacute;vue. Elle ne sera donc pas au tournoi de Miami la semaine prochaine et&nbsp;manquera &eacute;galement celui de&nbsp;Monterrey du 2 au 8 avril.</span></p>\r\n\r\n<p><span style=\"font-size:14px\">Le corps de l&#39;ancienne num&eacute;ro 1 fran&ccedil;aise n&#39;a pas r&eacute;sist&eacute; &agrave; l&#39;entra&icirc;nement intensif qu&#39;elle s&#39;inflige pour revenir &agrave; son poids optimal. Elle doit se reposer au minimum trois semaines, mais, selon l&#39;Equipe, elle attendra jusqu&#39;au d&eacute;but de la saison sur gazon, au mois de juin, pour reprendre sa carri&egrave;re.&nbsp;Lucide, Bartoli expliquait la semaine derni&egrave;re que son come-back &quot;allait prendre du temps&quot; et qu&#39;il y &quot;avait tellement de points d&#39;interrogation&quot;.&nbsp;</span></p>\r\n', '6.jpg'),
+(59, 'A Wimbledon, Federer fait le « grand huit »', '<p><strong>&nbsp;Pour &laquo; l&rsquo;amour du jeu &raquo;</strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Apr&egrave;s avoir gagn&eacute; en finale contre le Croate Marin Cilic, le Suisse est devenu le recordman masculin du nombre de victoires &agrave; Londres</p>\r\n\r\n<p>Le joueur qui soul&egrave;ve la coupe, ce dimanche 16&nbsp;juillet, devant le duc et la duchesse de Cambridge, n&rsquo;a plus grand-chose &agrave; voir avec celui qui s&rsquo;&eacute;tait impos&eacute; sur ce m&ecirc;me Centre Court, il y a de cela quatorze ans.</p>\r\n\r\n<p>Flottant dans un polo trop large, le visage rong&eacute; par une barbe de trois jours, le gamin au catogan affichait une n&eacute;gligence pour ainsi dire&nbsp;<em>outrageous</em>&nbsp;dans un lieu sacr&eacute; comme le All England Lawn Tennis Club, th&eacute;&acirc;tre du tournoi de Wimbledon.</p>\r\n\r\n<p><em>&laquo;&nbsp;Petit, je blaguais avec mes copains en disant qu&rsquo;un jour, je gagnerais ici. Aujourd&rsquo;hui, c&rsquo;est devenu r&eacute;alit&eacute; et j&rsquo;ai du mal &agrave; y croire&nbsp;&raquo;,&nbsp;</em>disait-il le 7 juillet 2003, tenant dans ses bras son premier troph&eacute;e en Grand Chelem.</p>\r\n\r\n<p>A 35 ans et 11 mois, Roger Federer est aussi glabre que bien mis, et les chiffres sont encore moins vraisemblables. Le&nbsp;<em>&laquo;&nbsp;gamin normal de B&acirc;le qui esp&eacute;rait juste devenir joueur professionnel&nbsp;&raquo;</em>&nbsp;en comptabilise d&eacute;sormais dix-neuf, apr&egrave;s sa victoire en finale contre le Croate Marin Cilic<strong>&nbsp;</strong>(6-3, 6-1, 6-4), synonyme de huiti&egrave;me titre historique.</p>\r\n\r\n<p>Aucun suspense</p>\r\n\r\n<p>Le Suisse distance d&eacute;finitivement l&rsquo;Am&eacute;ricain Pete Sampras et le Britannique William Renshaw, qui s&rsquo;&eacute;taient arr&ecirc;t&eacute;s &agrave; sept titres sur le gazon londonien &ndash; le record absolu est d&eacute;tenu par Martina Navratilova, vainqueure &agrave; neuf reprises.</p>\r\n\r\n<p>Ses succ&egrave;s en d&eacute;but d&rsquo;ann&eacute;e &agrave; l&rsquo;Open d&rsquo;Australie, &agrave; Indian Wells (Californie) et &agrave; Miami (Floride), puis &agrave; Halle (Allemagne), fin juin, en avaient fait le favori &agrave; Londres, o&ugrave; sa derni&egrave;re victoire remontait toutefois &agrave; 2012. Jamais inqui&eacute;t&eacute; (pas un set de perdu en sept matchs), ses rivaux Rafael Nadal, Novak Djokovic et Andy Murray &eacute;cart&eacute;s de son chemin, le troph&eacute;e lui tendait les bras.</p>\r\n\r\n<p>La finale ne restera certes pas dans les annales, ou bien alors parmi celles les plus soporifiques de ces derni&egrave;res ann&eacute;es en Grand Chelem tant il n&rsquo;y eut aucun suspense.</p>\r\n\r\n<p>Cilic, le pied endolori &agrave; cause d&rsquo;une ampoule, et sans doute...</p>\r\n\r\n<p><br />\r\nEn savoir plus sur http://www.lemonde.fr/tennis/article/2017/07/17/a-wimbledon-federer-fait-le-grand-huit-pour-l-amour-du-jeu_5161307_1616659.html#iTOlgEo5olIg1O03.99</p>\r\n', '7.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `phase`
+--
+
+CREATE TABLE `phase` (
+  `NomPhase` varchar(45) NOT NULL,
+  `NbPhase` int(11) NOT NULL,
+  `Tournoi_NomTournoi` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `phases`
+--
+
+CREATE TABLE `phases` (
+  `Nom` varchar(30) NOT NULL,
+  `Phase1` varchar(30) NOT NULL,
+  `Phase2` varchar(30) NOT NULL,
+  `Phase3` varchar(30) NOT NULL,
+  `Phase4` varchar(30) NOT NULL,
+  `Phase5` varchar(30) NOT NULL,
+  `Phase6` varchar(30) NOT NULL,
+  `Phase7` varchar(30) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `phases`
+--
+
+INSERT INTO `phases` (`Nom`, `Phase1`, `Phase2`, `Phase3`, `Phase4`, `Phase5`, `Phase6`, `Phase7`) VALUES
+('A.Murray       ', '6|6|6', '6|6|6', '6|4|6|7', '7|7|66', '6|4|7|7|1|1', '', ''),
+('A.Bublik       ', '1-4-2', '', '', '', '', '', ''),
+('J.Sousa        ', '6-6[5]-44', '', '', '', '', '', ''),
+('D.Brown        ', '3|7|76|6', '3|2|2', '', '', '', '', ''),
+('J.Vesely       ', '6|4|4|7|6', '6|3|4|2', '', '', '', '', ''),
+('I.Marchenko    ', '1|6|6|5|1', '', '', '', '', '', ''),
+('D.Tursunov     ', '1|3|3', '', '', '', '', '', ''),
+('F.Fognini      ', '6|6|6', '7|7|6|6', '2|6|1|5', '', '', '', ''),
+('N.Kyrgios      ', '3|4 ', '', '', '', '', '', ''),
+('P.Herbert      ', '6|6 ', '6|4|1|4', '', '', '', '', ''),
+('R.Dutra Silva  ', '4|6|6|1|4', '', '', '', '', '', ''),
+('B.Paire        ', '6|3|7|6', '7|7|6|6', '6|7|7|6', '6|1|4|4', '', '', ''),
+('D.Shapovalov   ', '4|6|3|6|2', '', '', '', '', '', ''),
+('J.Janowicz     ', '6|3|6|7|7', '7|7|7|7|3|6', '2|6|3|3', '', '', '', ''),
+('M.Jaziri       ', '7|7|4|4|6|2', '', '', '', '', '', ''),
+('L.Pouille      ', '6|5|6|6|7|7', '6|4|6|5|6|1', '', '', '', '', ''),
+('J-W.Tsonga     ', '6|6|6', '6|7|6', '2|6|6|5|6|5', '', '', '', ''),
+('C.Norrie       ', '3|2|2', '', '', '', '', '', ''),
+('S.Bolelli      ', '6|1|6|6', '1|5|2', '', '', '', '', ''),
+('Y-H.Lu         ', '3|6|3|4', '', '', '', '', '', ''),
+('C.Berlocq      ', '4|6|3|1', '', '', '', '', '', ''),
+('N.Basilashvili ', '6|7|7|6', '4|6|3|3', '', '', '', '', ''),
+('T.Fabbiano     ', '6|5|5|2', '', '', '', '', '', ''),
+('S.Querrey      ', '7|7|7|6', '6|4|6|6', '6|3|7|1|7', '5|7|7|6|6|1|1|6', '3|6|6|6|6', '7|8|4|6|3|5', ''),
+('F.Verdasco     ', '6|6|5|6|8|3', '', '', '', '', '', ''),
+('K.Anderson     ', '2|7|7|7|6', '6|7|7|6', '7|7|6|7|7', '7|6|5|3|7|1|3|3', '', '', ''),
+('N.Gombos       ', '2|6|2|1', '', '', '', '', '', ''),
+('A.Seppi        ', '6|3|6|6', '3|6|4|3', '', '', '', '', ''),
+('T.Haas GER     ', '2|6|3|5', '', '', '', '', '', ''),
+('R.Bemelmans    ', '6|3|6|7', '6|6|3|2|6', '6|3|4|6', '', '', '', ''),
+('D.Medvedev     ', '6|3|6|6', '4|2|6|6|3', '', '', '', '', ''),
+('S.Wawrinka     ', '4|6|4|1', '', '', '', '', '', ''),
+('R.Nadal        ', '6|6|6', '6|6|7', '6|6|7|7', '3|4|6|6|1|3', '', '', ''),
+('J.Millman      ', '1|3|2', '', '', '', '', '', ''),
+('D.Young        ', '5|6|6|4', '4|2|5', '', '', '', '', ''),
+('D.Istomin      ', '7|4|4|2', '', '', '', '', '', ''),
+('T.Monteiro     ', '4|6|7|7|7|7', '6|6|5|6|3|5', '', '', '', '', ''),
+('A.Whittington  ', '6|3|6|6|5', '', '', '', '', '', ''),
+('An.Kuznetsov   ', '6|4|6|3|6|2', '', '', '', '', '', ''),
+('K.Khachanov    ', '7|7|2|6|1|6', '3|7|7|7|7', '|1|4|6', '', '', '', ''),
+('I.Karlovic     ', '7|7|6|6|7|9|6|7|6', '', '', '', '', '', ''),
+('A.Bedene       ', '6|5|7|8|6|7|9|8', '6|3|6|6', '6|3|6|6', '', '', '', ''),
+('D.Dzumhur      ', '6|6|6', '3|6|3|3', '', '', '', '', ''),
+('R.Olivo        ', '2|0|1', '', '', '', '', '', ''),
+('L.Rosol        ', '4|7|6|6', '5|7|9|6|3|7', '', '', '', '', ''),
+('H.Laaksonen    ', '6|5|3|4', '', '', '', '', '', ''),
+('M.Fucsovics    ', '5|4|2', '', '', '', '', '', ''),
+('G.Muller       ', '7|6|6', '7|6|7|4|6|9', '7|7|7|6', '6|6|3|4|1|5', '6|6|6|5|7|1', '', ''),
+('K.Nishikori    ', '6|6|6', '6|6|7|6|7|8', '4|6|3|6|3', '', '', '', ''),
+('M.Cecchinato   ', '2|2|0', '', '', '', '', '', ''),
+('J.Benneteau    ', '3|6|8|6|2', '', '', '', '', '', ''),
+('S.Stakhovsky   ', '6|7|1|0|2|6', '4|7|9|1|6|6', '', '', '', '', ''),
+('P.Gojowczyk    ', '7|7|2|6|6', '2|1|6|3', '', '', '', '', ''),
+('M.Copil        ', '6|5|6|3|1', '', '', '', '', '', ''),
+('A.Haider-Maurer', '3|1|2', '', '', '', '', '', ''),
+('R.Bautista Agut', '6|6|6', '6|6|3|6', '6|7|7|3|6', '2|2|2', '', '', ''),
+('S.Johnson      ', '6|7|6', '6|6|4|6', '4|6|3|4', '', '', '', ''),
+('N.Kicker       ', '4|5|3', '', '', '', '', '', ''),
+('F.Bagnis       ', '6|4|6|9|6|3', '', '', '', '', '', ''),
+('R.Albot        ', '4|6|7|7|7', '3|3|6|3', '', '', '', '', ''),
+('V.Troicki      ', '1|', '', '', '', '', '', ''),
+('F.Mayer        ', '6|', '6|2|4|5', '', '', '', '', ''),
+('P.Kohlschreiber', '4|2|3', '', '', '', '', '', ''),
+('M.Cilic        ', '6|6|6', '7|7|6|7', '6|7|7|6', '6|6|6', '3|7|8|7|5|6', '6|6|6|7|7', '3|1|4'),
+('M.Raonic       ', '7|7|6|7|7', '3|7|9|6|7', '7|7|6|7', '4|7|4|7|6', '4|2|6|4', '', ''),
+('J.Struff       ', '6|5|2|6', '', '', '', '', '', ''),
+('M.Youzhny      ', '6|7|6', '6|6|7|4|5', '', '', '', '', ''),
+('N.Mahut        ', '2|5|4', '', '', '', '', '', ''),
+('A.Rublev       ', '6|3|6|7|1|7', '5|7|8|6|3|4', '', '', '', '', ''),
+('S.Travaglia    ', '7|7|3|5|6|5', '', '', '', '', '', ''),
+('J.Thompson     ', '4|4|6|4', '', '', '', '', '', ''),
+('A.Ramos-Vinolas', '6|6|7', '7|6|6|4|6|6', '6|3|4|5', '', '', '', ''),
+('J.Sock         ', '6|4|7|7|6', '3|4|6|6|2', '', '', '', '', ''),
+('C.Garin        ', '3|6|6|3', '', '', '', '', '', ''),
+('T.Bellucci     ', '2|3|2', '', '', '', '', '', ''),
+('S.Ofner        ', '6|6|6', '6|6|3|2|6', '4|4|2', '', '', '', ''),
+('R.Haase        ', '3|6|6|5|5', '4|3|7|1|0|3', '', '', '', '', ''),
+('F.Tiafoe       ', '6|3|7|7', '3|4|3', '', '', '', '', ''),
+('E.Donskoy      ', '4|6|3|3', '', '', '', '', '', ''),
+('A.Zverev       ', '6|7|7|6', '6|6|6', '6|6|6', '6|5|6|5|1', '', '', ''),
+('G.Dimitrov     ', '7|7|6|6', '6|6|6', '6|6', '4|2|4', '', '', ''),
+('D.Schwartzman  ', '6|4|2|2', '', '', '', '', '', ''),
+('J.Ward         ', '4|4|3', '', '', '', '', '', ''),
+('M.Baghdatis    ', '6|6|6', '3|2|1', '', '', '', '', ''),
+('D.Sela         ', '4|6|1|6|6', '6|5|7|7|5|7|7|6', '1|1', '', '', '', ''),
+('M.Granollers   ', '6|3|6|2|1', '', '', '', '', '', ''),
+('T.Fritz        ', '4|6|3|3', '', '', '', '', '', ''),
+('J.Isner        ', '6|7|7|6', '7|7|6|5|7|6|5|3', '', '', '', '', ''),
+('M.Zverev       ', '6|6|6', '6|6|2|3|6', '6|3|4|4', '', '', '', ''),
+('B.Tomic        ', '4|3|4', '', '', '', '', '', ''),
+('M.Kukushkin    ', '4|6|7|7|6', '1|2|6|6|4', '', '', '', '', ''),
+('T.Daniel       ', '6|4|6|2', '', '', '', '', '', ''),
+('S.Tsitsipas    ', '4|4|4', '', '', '', '', '', ''),
+('D.Lajovic      ', '6|6|6', '6|0|3|2', '', '', '', '', ''),
+('A.Dolgopolov   ', '3|0', '', '', '', '', '', ''),
+('R.Federer      ', '6|3', '7|7|6|6', '7|7|6|6', '6|6|6', '6|6|7', '7|7|7|7|6', '6|6|6'),
+('D.Thiem        ', '6|6|6', '5|6|6|6', '7|6|6', '3|7|7|3|6|3', '', '', ''),
+('V.Pospisil     ', '443', '', '', '', '', '', ''),
+('G.Simon        ', '7766', '7424', '', '', '', '', ''),
+('N.Jarry        ', '6433', '', '', '', '', '', ''),
+('J.Tipsarevic   ', '0|', '', '', '', '', '', ''),
+('J.Donaldson    ', '5|', '6|7|7|6|6', '5|4|2', '', '', '', ''),
+('H.Zeballos     ', '6|3|6|6|8|5', '', '', '', '', '', ''),
+('P.Lorenzi      ', '7|7|4|7|7', '4|6|0|7|2', '', '', '', '', ''),
+('R.Gasquet      ', '3|4|7|2', '', '', '', '', '', ''),
+('D.Ferrer       ', '6|6|5|6', '3|', '3|4|3', '', '', '', ''),
+('S.Darcis       ', '4|6|2|6|6', '0|', '', '', '', '', ''),
+('R.Berankis     ', '6|3|6|4|3', '', '', '', '', '', ''),
+('B.Coric        ', '6|4|46|6', '', '', '', '', '', ''),
+('R.Harrison     ', '7|7|6|7', '', '', '', '', '', ''),
+('J.Chardy       ', '3|6|6|4|4', '', '', '', '', '', ''),
+('T.Berdych      ', '6|3|7|6', '6|6|6|6', '6|6|6', '6|6|1|6|3|6', '7|7|2', '6|4|6|4|4', ''),
+('G.Monfils      ', '6|7|6', '7|7|6|6', '6|3|6|7|3|2', '', '', '', ''),
+('D.Brands       ', '354', '', '', '', '', '', ''),
+('K.Edmund       ', '4|6|6|6', '6|1|4|4', '', '', '', '', ''),
+('A.Ward         ', '6|3|2|1', '', '', '', '', '', ''),
+('Y.Sugita       ', '7|7|6|6', '1|7|6|6|2|2', '', '', '', '', ''),
+('B.Klein        ', '6|5|3|0', '', '', '', '', '', ''),
+('A.Mannarino    ', '5|6|6|4', '6|5|4|7|7|6', '7|7|4|5|6|6', '2|6|5|4', '', '', ''),
+('F.Lopez        ', '7|1|1|3', '', '', '', '', '', ''),
+('J.Del          ', '6|3|7|7|6', '4|4|6|3', '', '', '', '', ''),
+('T.Kokkinakis   ', '3|6|6|4', '', '', '', '', '', ''),
+('E.Gulbis       ', '6|6|6', '6|6|7', '4|1|6|2', '', '', '', ''),
+('V.Estrella     ', '1|1|2', '', '', '', '', '', ''),
+('A.Pavlasek     ', '6|7|6|6|6', '2|2|1', '', '', '', '', ''),
+('E.Escobedo     ', '7|9|1|3|1', '', '', '', '', '', ''),
+('M.Klizan       ', '3|0', '', '', '', '', '', ''),
+('N.Djokovic     ', '6|2', '6|6|6', '6|6|7', '6|7|7|6', '6|2|0', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `rencontre`
+--
+
+CREATE TABLE `rencontre` (
+  `DateRencontre` date NOT NULL,
+  `Phase_NomPhase` varchar(45) NOT NULL,
+  `Stade_NomStade` varchar(45) NOT NULL,
+  `Stade_LieuxStade` varchar(45) NOT NULL,
+  `Arbitre_idArbitre` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `rencontre_has_joueur`
+--
+
+CREATE TABLE `rencontre_has_joueur` (
+  `Rencontre_DateRencontre` date NOT NULL,
+  `Joueur_idJoueur` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `stade`
+--
+
+CREATE TABLE `stade` (
+  `NomStade` varchar(45) NOT NULL,
+  `LieuxStade` varchar(45) NOT NULL,
+  `NbPlaces` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `tournoi`
+--
+
+CREATE TABLE `tournoi` (
+  `NomTournoi` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Index pour les tables exportées
+--
+
+--
+-- Index pour la table `arbitre`
+--
+ALTER TABLE `arbitre`
+  ADD PRIMARY KEY (`idArbitre`);
+
+--
+-- Index pour la table `entraineur`
+--
+ALTER TABLE `entraineur`
+  ADD PRIMARY KEY (`IdEntraineur`);
+
+--
+-- Index pour la table `evenement`
+--
+ALTER TABLE `evenement`
+  ADD PRIMARY KEY (`TypeEvenement`),
+  ADD KEY `fk_Evenement_Rencontre1_idx` (`Rencontre_DateRencontre`);
+
+--
+-- Index pour la table `joueur`
+--
+ALTER TABLE `joueur`
+  ADD PRIMARY KEY (`idJoueur`),
+  ADD KEY `fk_Joueur_Entraineur1_idx` (`Entraineur_IdEntraineur`);
+
+--
+-- Index pour la table `joueur_has_evenement`
+--
+ALTER TABLE `joueur_has_evenement`
+  ADD PRIMARY KEY (`Joueur_idJoueur`,`Evenement_TypeEvenement`),
+  ADD KEY `fk_Joueur_has_Evenement_Evenement1_idx` (`Evenement_TypeEvenement`),
+  ADD KEY `fk_Joueur_has_Evenement_Joueur1_idx` (`Joueur_idJoueur`);
+
+--
+-- Index pour la table `journaliste`
+--
+ALTER TABLE `journaliste`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `journaliste_post`
+--
+ALTER TABLE `journaliste_post`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `phase`
+--
+ALTER TABLE `phase`
+  ADD PRIMARY KEY (`NomPhase`),
+  ADD KEY `fk_Phase_Tournoi1_idx` (`Tournoi_NomTournoi`);
+
+--
+-- Index pour la table `rencontre`
+--
+ALTER TABLE `rencontre`
+  ADD PRIMARY KEY (`DateRencontre`),
+  ADD KEY `fk_Rencontre_Phase1_idx` (`Phase_NomPhase`),
+  ADD KEY `fk_Rencontre_Stade1_idx` (`Stade_NomStade`,`Stade_LieuxStade`),
+  ADD KEY `fk_Rencontre_Arbitre1_idx` (`Arbitre_idArbitre`);
+
+--
+-- Index pour la table `rencontre_has_joueur`
+--
+ALTER TABLE `rencontre_has_joueur`
+  ADD PRIMARY KEY (`Rencontre_DateRencontre`,`Joueur_idJoueur`),
+  ADD KEY `fk_Rencontre_has_Joueur_Joueur1_idx` (`Joueur_idJoueur`),
+  ADD KEY `fk_Rencontre_has_Joueur_Rencontre_idx` (`Rencontre_DateRencontre`);
+
+--
+-- Index pour la table `stade`
+--
+ALTER TABLE `stade`
+  ADD PRIMARY KEY (`NomStade`,`LieuxStade`);
+
+--
+-- Index pour la table `tournoi`
+--
+ALTER TABLE `tournoi`
+  ADD PRIMARY KEY (`NomTournoi`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `arbitre`
+--
+ALTER TABLE `arbitre`
+  MODIFY `idArbitre` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `entraineur`
+--
+ALTER TABLE `entraineur`
+  MODIFY `IdEntraineur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT pour la table `joueur`
+--
+ALTER TABLE `joueur`
+  MODIFY `idJoueur` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `journaliste`
+--
+ALTER TABLE `journaliste`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+--
+-- AUTO_INCREMENT pour la table `journaliste_post`
+--
+ALTER TABLE `journaliste_post`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+--
+-- Contraintes pour les tables exportées
+--
+
+--
+-- Contraintes pour la table `evenement`
+--
+ALTER TABLE `evenement`
+  ADD CONSTRAINT `fk_Evenement_Rencontre1` FOREIGN KEY (`Rencontre_DateRencontre`) REFERENCES `rencontre` (`DateRencontre`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Contraintes pour la table `joueur`
+--
+ALTER TABLE `joueur`
+  ADD CONSTRAINT `fk_Joueur_Entraineur1` FOREIGN KEY (`Entraineur_IdEntraineur`) REFERENCES `entraineur` (`IdEntraineur`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Contraintes pour la table `joueur_has_evenement`
+--
+ALTER TABLE `joueur_has_evenement`
+  ADD CONSTRAINT `fk_Joueur_has_Evenement_Evenement1` FOREIGN KEY (`Evenement_TypeEvenement`) REFERENCES `evenement` (`TypeEvenement`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Joueur_has_Evenement_Joueur1` FOREIGN KEY (`Joueur_idJoueur`) REFERENCES `joueur` (`idJoueur`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Contraintes pour la table `phase`
+--
+ALTER TABLE `phase`
+  ADD CONSTRAINT `fk_Phase_Tournoi1` FOREIGN KEY (`Tournoi_NomTournoi`) REFERENCES `tournoi` (`NomTournoi`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Contraintes pour la table `rencontre`
+--
+ALTER TABLE `rencontre`
+  ADD CONSTRAINT `fk_Rencontre_Arbitre1` FOREIGN KEY (`Arbitre_idArbitre`) REFERENCES `arbitre` (`idArbitre`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Rencontre_Phase1` FOREIGN KEY (`Phase_NomPhase`) REFERENCES `phase` (`NomPhase`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Rencontre_Stade1` FOREIGN KEY (`Stade_NomStade`,`Stade_LieuxStade`) REFERENCES `stade` (`NomStade`, `LieuxStade`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Contraintes pour la table `rencontre_has_joueur`
+--
+ALTER TABLE `rencontre_has_joueur`
+  ADD CONSTRAINT `fk_Rencontre_has_Joueur_Joueur1` FOREIGN KEY (`Joueur_idJoueur`) REFERENCES `joueur` (`idJoueur`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Rencontre_has_Joueur_Rencontre` FOREIGN KEY (`Rencontre_DateRencontre`) REFERENCES `rencontre` (`DateRencontre`) ON DELETE NO ACTION ON UPDATE NO ACTION;

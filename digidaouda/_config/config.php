@@ -1,0 +1,12 @@
+<?php
+    define("PATH_BODY","body/");
+    define("PATH_PAGES","pages/");
+    if(isset($_SESSION["digiecool"])){
+        $section=$_SESSION["digiecool"];
+    }else{
+        $section="parent";
+    }
+    define("PREFIXE",$section.".");
+    define("DEFAULT_PAGE_PARENT","accueil");
+    require_once("_config/".PREFIXE."loader.php");
+?>

@@ -1,0 +1,9 @@
+<?php
+session_start();
+if(isset($_GET["ses"])){
+    $_SESSION["digiecool"]=htmlspecialchars(trim($_GET["ses"]));
+    header("Location:index.php");
+    die();
+}
+header("Location:login.php");
+?>

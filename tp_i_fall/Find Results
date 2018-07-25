@@ -1,0 +1,19 @@
+Searching 3 files for "$les_pages"
+
+/Users/retina/Desktop/php/tp_i_fall/album.php:
+   10                           $files=scandir("files");
+   11                           $les_tofs=count($files);
+   12:                          echo "$les_tofs";
+   13                           $nomb_page_poss=$les_tofs/$nbr;
+   14                           echo "$nomb_page_poss";
+   15:                          			for($i=0;$i<$les_tofs;$i++)
+   16                           			 {
+   17                                         if($files[$i]!="." && $files[$i]!="..")
+   ..
+  108   <?php 									if ($numb_page==$nomb_page_poss) 
+  109   												{
+  110:  													$nbr=$les_tofs-$start;
+  111  												}
+  112  									for ($i=$start; $i <($start+$nbr); $i++) 
+
+3 matches in 1 file

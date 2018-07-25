@@ -1,0 +1,66 @@
+  
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>---Syst&egrave;me de gestion des arr&ecirc;ts de travail de la SDE---</title>
+		<link rel="stylesheet"    href="css/global.css"> 
+		<link rel="stylesheet"    href="css/design.css" media="screen" type="text/css" title="Design" /> 	
+		<style type="text/css">
+		<!--
+		a:link    { color: #0000FF;}
+		a:visited { color: #0000FF;}
+		a:hover   {	color: #FF0000;}
+		a:active  {	color: #0000FF;}
+		.Style1 { color: #FFFFFF; font-weight: bold; font-size: 45px; }
+		.Style8 { color: #FFFFFF; font-weight: bold; }
+		-->
+		</style>
+	</head>
+	<body>
+		<form name="ChgForm" action = "" method="POST" id="ChgForm"> 
+		    <br/> 
+			    <table align="center"  bgcolor="#000080" cellpadding="3"  cellspacing="4">
+				<tr class="titretab"> <td colspan = "2"><div align="center"><span class="Style1">SAISIE DEMANDE</span> </div></td></tr>			
+					
+				
+				
+				<tr><td><div align="left"><span class="Style2 Style8">Numero demande</span></div> </td>
+					 <td><div align="left"><input name="num_demande" type="text"  id="num_demande" size="20" ></div> </td>
+				</tr>
+
+				<tr><td><div align="left"><span class="Style2 Style8">Date de traitement souhait&eacute;</span></div> </td>
+					 <td><div align="left"><input name="date_trait_souhaite" type="text"  id="date_trait_souhaite" size="20" ></div> </td>
+				</tr>
+
+				<tr><td><div align="left"><span class="Style2 Style8">Date d'emission</span></div> </td>
+					 <td><div align="left"><input name="date_emission" type="text"  id="date_emission" size="20" ></div> </td>
+				</tr>
+
+				<tr><td><div align="left"><span class="Style2 Style8">Probleme soulev&eacute;</span></div> </td>
+					 <td><div align="left"><input name="probleme" type="text"  id="probleme" size="20" ></div> </td>
+				</tr>		
+				
+				
+				<tr><td><div align="left"><span class="Style2 Style8">Description</span></div> </td>
+					 <td><div align="left"><input name="description" type="text" id="description" size="20" ></div> </td>
+				</tr>
+				
+				
+				
+				
+
+				<tr>
+					<p></p>
+					<td >
+						<input class = "TailleBouton" type= "submit" name="ajout_rapport" value="Enregistrer" /> 
+					</td>
+					<td >
+						<button class = "TailleBouton" onclick="window.location.href='liste_rapport_activites.php'">Annuler</button>
+					</td>
+				</tr> 
+					
+			</table>
+		</form>
+	</body>
+</html>
